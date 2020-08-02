@@ -1,0 +1,75 @@
+Langkah Awal adalah memastikan Apache dan mySQL berjalan
+Buka command promt, lalu ketikan :
+cd..
+cd..
+cd xampp
+cd mysql
+cd bin
+mysql -u root
+
+JAWABAN NO.1
+create database myshop;
+use myshop;
+
+JAWABAN NO.2
+create table users(
+	id int primary key auto_increment,
+	name varchar(255),
+	email varchar(255),
+	password varchar(255));
+
+desc users;
+
+create table categories(
+	id int primary key auto_increment,
+	name varchar(255));
+desc categories;
+
+create table items(
+	id int primary key auto_increment,
+	name varchar(255),
+	description varchar(255),
+	price int,
+	stock int,
+	category_id int,
+	foreign key(category_id) references categories(id));
+desc items;
+
+JAWABAN NO 3.
+
+insert into users values 
+	('','John Doe','john@doe.com','john123'),
+	('','Jane Doe','jane@doe.com','jenita123');
+select * from users;
+insert into categories values
+	('','gadget'),
+	('','cloth'),
+	('','men'),
+	('','women'),
+	('','branded');
+select * from categories;
+insert into items values
+	('','Sumsang b50','hape keren dari merek sumsang' ,4000000,100,1),
+	('','Uniklooh','baju keren dari brand ternama' ,500000,50,2),
+	('','IMHO Watch','jam tangan anak yang jujur banget',2000000,10,1);
+select * from items;
+
+JAWABAN NO 4a
+select id,name,email from users;
+
+JAWABAN NO 4b
+select * from items where price > 1000000;
+
+select * from items where name like '%sang%';
+
+JAWABAN NO 4c
+select items.name, items.description, items.price, items.stock,items.category_id, categories.name kategori from items inner join categories ON items.category_id=categories.id;
+
+JAWABAN NO 5
+UPDATE items SET PRICE = 2500000 WHERE name ='Sumsang b50';
+SELECT * FROM items;
+
+
+
+
+
